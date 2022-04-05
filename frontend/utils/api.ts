@@ -1,5 +1,5 @@
 export function getStrapiURL(path: string = ""): string {
-    return `${process.env.STRAPI_API_URL || "http://localhost:8082"
+    return `${process.env.API_URL || "http://localhost:8082"
         }/${path}`;
 }
 
