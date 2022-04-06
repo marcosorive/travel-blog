@@ -2,6 +2,7 @@ const { parse } = require("pg-connection-string");
 
 module.exports = ({ env }) => {
   const { host, port, database, user, password } = parse(env("DATABASE_URL"));
+  const shoulUseSqlite = process.env.DATABASE_TYPE_SQLITE === 'true';
 
   const postgresSettings = {
     client: "postgres",
@@ -18,12 +19,18 @@ module.exports = ({ env }) => {
     filename: '.tmp/data.db'
   }
 
+  if (shoulUseSqlite) {
+    console.log("Running with SQLITE")
+  } else {
+    console.log("Running with POSTGRES")
+  }
+
   return {
     defaultConnection: 'default',
     connections: {
       default: {
         connector: 'bookshelf',
-        settings: process.env.DATABASE_TYPE_SQLITE ? sqliteSettings : postgresSettings,
+        settings: shoulUseSqlite ? sqliteSettings : postgresSettings,
         options: {
           useNullAsDefault: true,
         },
