@@ -5,7 +5,7 @@ import { Article } from "../Entities";
 import { fetchAPI } from "../utils/api";
 import { API_PATHS } from "../constants/urls";
 import Image from "next/image";
-import { Layout } from "./components/layout";
+import { Layout } from "../components/layout";
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = (props: any) => {

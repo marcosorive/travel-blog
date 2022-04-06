@@ -6,7 +6,7 @@ import { Article } from "../../Entities";
 import { fetchAPI } from "../../utils/api";
 import { API_PATHS } from "../../constants/urls";
 import styles from '../../styles/Home.module.css'
-import { Layout } from "../components/layout";
+import { Layout } from "../../components/layout";
 
 const BlogArticlePage: NextPage = (props: any) => {
     const article: Article = props.article;
